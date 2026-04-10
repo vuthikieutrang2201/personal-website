@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đăng ký / Đăng nhập</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px 16px;
+    }
+
+    .page { display: none; width: 100%; justify-content: center; }
+    .page.active { display: flex; }
+
+    /* ===== CARD ===== */
+    .card {
+      background-color: #1e1e1e;
+      padding: 40px 32px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 { color: #fff; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
+
+    .subtitle {
+      color: #aaa;
+      font-size: 0.82rem;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .subtitle span { color: #fff; }
+
+    label {
+      display: block;
+      color: #ccc;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+    }
+
+    input[type="email"],
+    input[type="text"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    select {
+      width: 100%;
+      padding: 13px 14px;
+      background-color: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 14px;
+      appearance: none;
+    }
+    input::placeholder, select { color: #666; }
+    select option { color: #fff; background: #2a2a2a; }
+    input:focus, select:focus { border-color: #2f7a8f; }
+
+    .email-readonly {
+      background-color: #252525 !important;
+      color: #aaa !important;
+      cursor: not-allowed;
+    }
+
+    /* OTP row */
+    .otp-wrapper {
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .otp-wrapper input {
+      width: 100%;
+      padding: 13px 80px 13px 14px;
+      background-color: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      margin-bottom: 0;
+    }
+    .otp-wrapper input:focus { border-color: #2f7a8f; }
+    .otp-timer {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      font-size: 0.82rem;
+    }
+
+    .otp-btns {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .btn-outline {
+      flex: 1;
+      padding: 12px;
+      background: transparent;
+      border: 1px solid #555;
+      color: #ccc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: #aaa; color: #fff; }
+    .btn-outline.active-tab {
+      border-color: #fff;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Password eye */
+    .pw-wrapper {
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .pw-wrapper input {
+      width: 100%;
+      padding: 13px 44px 13px 14px;
+      background-color: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      margin-bottom: 0;
+    }
+    .pw-wrapper input:focus { border-color: #2f7a8f; }
+    .pw-toggle {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #888;
+      font-size: 1rem;
+    }
+
+    /* Phone row */
+    .phone-wrapper {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .phone-wrapper select {
+      width: 85px;
+      flex-shrink: 0;
+      margin-bottom: 0;
+      padding: 13px 8px;
+    }
+    .phone-wrapper input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    /* Select with arrow */
+    .select-wrapper {
+      position: relative;
+      margin-bottom: 14px;
+    }
+    .select-wrapper select {
+      width: 100%;
+      margin-bottom: 0;
+      padding-right: 36px;
+    }
+    .select-wrapper::after {
+      content: '▼';
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+      font-size: 0.7rem;
+      pointer-events: none;
+    }
+
+    /* Checkboxes */
+    .check-section { margin: 6px 0; }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .check-item input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      accent-color: #1f4fa3;
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+    .check-item span {
+      color: #bbb;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+    .check-item span b { color: #fff; font-weight: 600; }
+    .check-item .arrow {
+      margin-left: auto;
+      color: #888;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .agree-all {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .agree-all input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: #1f4fa3;
+      cursor: pointer;
+    }
+    .agree-all span { color: #fff; font-size: 0.88rem; font-weight: 600; }
+
+    .divider { border: none; border-top: 1px solid #333; margin: 10px 0 14px; }
+
+    .note-box {
+      display: flex;
+      gap: 10px;
+      background: #252525;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 20px;
+      margin-top: 4px;
+    }
+    .note-box .icon { color: #888; font-size: 1rem; flex-shrink: 0; }
+    .note-box p { color: #888; font-size: 0.78rem; line-height: 1.5; }
+
+    .btn-primary {
+      width: 100%;
+      padding: 16px;
+      background-color: #1f4fa3;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary:hover { background-color: #2459b8; }
+
+    /* ===== OVERLAY / DIALOG ===== */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    .overlay.active { display: flex; }
+
+    .dialog {
+      background-color: #7a8a9a;
+      border-radius: 14px;
+      padding: 36px 32px 28px;
+      width: 90%;
+      max-width: 560px;
+      text-align: center;
+    }
+    .dialog p.title { color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .dialog p.sub { color: #e0e0e0; font-size: 0.95rem; margin-bottom: 28px; }
+    .dialog-btns { display: flex; gap: 14px; }
+    .btn-cancel {
+      flex: 1; padding: 15px;
+      background: #111; color: #fff;
+      font-size: 0.95rem; font-weight: 700;
+      border: none; border-radius: 8px; cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+    .btn-cancel:hover { background: #222; }
+    .btn-dky {
+      flex: 1; padding: 15px;
+      background: #1f4fa3; color: #fff;
+      font-size: 0.95rem; font-weight: 700;
+      border: none; border-radius: 8px; cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+    .btn-dky:hover { background: #2459b8; }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: Nhập email -->
+  <div class="page active" id="page-email">
+    <div class="card">
+      <h1>Đăng ký hoặc đăng nhập bằng email</h1>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Nhập email của bạn" />
+      <button class="btn-primary" onclick="handleContinue()">Tiếp tục</button>
+    </div>
+  </div>
+
+  <!-- DIALOG xác nhận -->
+  <div class="overlay" id="overlay">
+    <div class="dialog">
+      <p class="title">Bạn cần đăng ký tài khoản.</p>
+      <p class="sub">Vui lòng đăng ký bằng email đã nhập.</p>
+      <div class="dialog-btns">
+        <button class="btn-cancel" onclick="closeDialog()">HỦY</button>
+        <button class="btn-dky" onclick="goToRegister()">ĐĂNG KÝ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: Đăng ký chi tiết -->
+  <div class="page" id="page-register">
+    <div class="card">
+      <h1 id="reg-title">Tôi sẽ tham gia HIEUTTHUHAI</h1>
+      <p class="subtitle">
+        Mã xác thực đã được gửi đến <span id="reg-email-display"></span>. Vui lòng xác thực email để tiếp tục đăng ký.
+      </p>
+
+      <!-- OTP -->
+      <label>Mã xác thực:</label>
+      <div class="otp-wrapper">
+        <input type="text" placeholder="Vui lòng nhập 6 chữ số mã xác minh." id="otp-input" />
+        <span class="otp-timer" id="otp-timer">02:49</span>
+      </div>
+      <div class="otp-btns">
+        <button class="btn-outline" onclick="resendOtp()">Gửi lại</button>
+        <button class="btn-outline active-tab">Xác thực</button>
+      </div>
+
+      <!-- Password -->
+      <label>Mật khẩu</label>
+      <div class="pw-wrapper">
+        <input type="password" id="reg-password" placeholder="Vui lòng nhập mật khẩu của bạn" />
+        <span class="pw-toggle" onclick="togglePw()">👁</span>
+      </div>
+
+      <!-- Biet danh -->
+      <label>Biệt danh (Bắt buộc)</label>
+      <input type="text" placeholder="Vui lòng nhập biệt danh của bạn" />
+
+      <!-- Ten -->
+      <label>Tên (Bắt buộc)</label>
+      <input type="text" placeholder="Vui lòng nhập tên của bạn" />
+
+      <!-- Ngay sinh -->
+      <label>Ngày sinh (Bắt buộc)</label>
+      <input type="text" placeholder="YYYY-MM-DD" />
+
+      <!-- So dien thoai -->
+      <label>Số điện thoại (Bắt buộc)</label>
+      <div class="phone-wrapper">
+        <select>
+          <option>+84</option>
+          <option>+1</option>
+          <option>+82</option>
+          <option>+81</option>
+        </select>
+        <input type="tel" placeholder="Vui lòng nhập không có dấu gạch ngang" />
+      </div>
+
+      <!-- Gioi tinh -->
+      <label>Giới tính (Bắt buộc)</label>
+      <div class="select-wrapper">
+        <select>
+          <option value="" disabled selected>Vui lòng chọn giới tính</option>
+          <option>Nam</option>
+          <option>Nữ</option>
+          <option>Khác</option>
+        </select>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Dong y tat ca -->
+      <label class="agree-all">
+        <input type="checkbox" id="chk-all" onchange="toggleAll(this)" />
+        <span>Đồng ý tất cả</span>
+      </label>
+
+      <!-- Checkbox items -->
+      <div class="check-section">
+        <label class="check-item">
+          <input type="checkbox" class="sub-chk" />
+          <span><b>[Bắt buộc]</b> Bạn phải từ 14 tuổi trở lên. (Quốc gia tiêu chuẩn: Việt Nam / 16 tuổi đối với người nước ngoài)</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" class="sub-chk" />
+          <span><b>[Bắt buộc]</b> Điều khoản dịch vụ</span>
+          <span class="arrow">›</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" class="sub-chk" />
+          <span><b>[Bắt buộc]</b> Đồng ý Thu thập và Sử dụng Thông tin Cá nhân</span>
+          <span class="arrow">›</span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" class="sub-chk" />
+          <span><b>[Chọn]</b> 마케팅 정보 수신 동의</span>
+          <span class="arrow">›</span>
+        </label>
+      </div>
+
+      <!-- Note box -->
+      <div class="note-box">
+        <span class="icon">ℹ️</span>
+        <p>Nếu đồng ý nhận thông tin quảng cáo, bạn có thể nhận được nhiều thông tin đa dạng như nội dung mới, sản phẩm (goods) và tin tức sự kiện.</p>
+      </div>
+
+      <button class="btn-primary">Đăng ký</button>
+    </div>
+  </div>
+
+  <script>
+    // Page 1
+    function handleContinue() {
+      const email = document.getElementById('email').value.trim();
+      if (!email) { alert('Vui lòng nhập email!'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Email không hợp lệ!'); return; }
+      document.getElementById('overlay').classList.add('active');
+    }
+    function closeDialog() {
+      document.getElementById('overlay').classList.remove('active');
+    }
+    function goToRegister() {
+      const email = document.getElementById('email').value.trim();
+      document.getElementById('reg-email-display').textContent = email;
+      document.getElementById('overlay').classList.remove('active');
+      document.getElementById('page-email').classList.remove('active');
+      document.getElementById('page-register').classList.add('active');
+      startTimer();
+    }
+
+    // OTP Timer
+    let timerInterval;
+    function startTimer() {
+      let total = 169;
+      clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        if (total <= 0) { clearInterval(timerInterval); document.getElementById('otp-timer').textContent = '00:00'; return; }
+        total--;
+        const m = String(Math.floor(total / 60)).padStart(2,'0');
+        const s = String(total % 60).padStart(2,'0');
+        document.getElementById('otp-timer').textContent = m + ':' + s;
+      }, 1000);
+    }
+    function resendOtp() {
+      document.getElementById('otp-timer').textContent = '02:49';
+      startTimer();
+    }
+
+    // Password toggle
+    function togglePw() {
+      const input = document.getElementById('reg-password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    // Check all
+    function toggleAll(master) {
+      document.querySelectorAll('.sub-chk').forEach(c => c.checked = master.checked);
+    }
+    document.addEventListener('change', function(e) {
+      if (e.target.classList.contains('sub-chk')) {
+        const all = document.querySelectorAll('.sub-chk');
+        const checked = document.querySelectorAll('.sub-chk:checked');
+        document.getElementById('chk-all').checked = all.length === checked.length;
+      }
+    });
+  </script>
+</body>
+</html>
