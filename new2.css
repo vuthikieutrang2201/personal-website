@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #010a1a;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    color: #e60000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+nav a.active {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+}
+
+.icons span {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* SECTION GENERAL */
+.section {
+    padding: 120px 10%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Hiệu ứng cuộn xịn hơn */
+    position: relative;
+}
+
+/* Hiệu ứng Gradient từ trái sang phải phối hợp làm tối hình nền */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(1, 10, 26, 0.95) 0%, rgba(0, 68, 204, 0.4) 50%, rgba(1, 10, 26, 0.95) 100%);
+    z-index: 1;
+}
+
+/* Chỉ định 6 hình nền theo thứ tự từ trên xuống */
+.bg1 { background-image: url(blob:https://gemini.google.com/dc76a8e2-484c-450f-92d3-a2b8f8295a9e); }
+.bg2 { background-image: url(blob:https://gemini.google.com/be851594-dd65-44b2-8015-1927c6172829); }
+.bg3 { background-image: url(blob:https://gemini.google.com/2bcfbd63-8cd9-4ad1-b048-4e6831c1f9de); }
+.bg4 { background-image: url(blob:https://gemini.google.com/fb29e574-174a-4df7-a1f4-0dd19e6cd5ae); }
+.bg5 { background-image: url(blob:https://gemini.google.com/f6a3edbd-8aaa-45bb-8158-c1059a2b6d58); }
+.bg6 { background-image: url('blob:https://gemini.google.com/0853f8e5-fbdd-4054-9bf8-b39a065e7841'); }
+
+.main-title, .sub-title, .container {
+    position: relative;
+    z-index: 2;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+    letter-spacing: 6px;
+}
+
+.sub-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.sub-title .small {
+    font-size: 0.9rem;
+    font-weight: 400;
+    display: block;
+}
+
+/* LAYOUTS */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.split {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.center-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.text-side {
+    flex: 1.2;
+}
+
+.text-side p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: #e0e0e0;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.image-side {
+    flex: 1;
+}
+
+.image-side img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+/* DUAL IMAGES GRID */
+.dual-images {
+    width: 100%;
+    margin: 30px 0;
+}
+
+.dual-images img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.text-bottom {
+    max-width: 850px;
+    line-height: 1.8;
+    color: #e0e0e0;
+}
+
+.text-bottom p {
+    margin-bottom: 10px;
+}
+
+/* PHOTOBOOTH SECTION (SECTION 6) */
+.photobooth-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pb-text p {
+    text-align: left;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.pb-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.caption-tag {
+    background: #0084ff;
+    color: #fff;
+    padding: 12px;
+    font-weight: bold;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .split, .photobooth-layout {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .text-side p {
+        text-align: center;
+    }
+    .pb-text p {
+        text-align: center;
+    }
+}
