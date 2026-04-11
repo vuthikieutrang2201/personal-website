@@ -1,24 +1,402 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Thong bao</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HIEUTHUHAI - Content</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 </head>
 <body>
 
-<div class="header">
-    <div class="noti" id="noti">
-        🔔
-        <span class="count" id="count">0</span>
-
-        <div class="box" id="box">
-            <p>Thong bao</p>
-            <ul id="list"></ul>
-        </div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">HIEUTHUHAI</div>
+    <ul class="nav-links">
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">ARTIST</a></li>
+      <li><a href="#" class="active">CONTENT</a></li>
+      <li><a href="#">FAN UNIVERSE</a></li>
+      <li><a href="#">SHOP</a></li>
+    </ul>
+    <div class="nav-icons">
+      <span class="icon">🔔</span>
+      <span class="icon">🛍️</span>
+      <span class="icon">👤</span>
     </div>
-</div>
+  </nav>
 
-<script src="script.js"></script>
+  <!-- SLIDER -->
+  <div class="slider-wrapper">
+    <div class="slider" id="slider">
+
+      <div class="slide active">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-tag">New! ›</span>
+          <h1>HIEUTHUHAI - Người Im Lặng Gặp Người Hay Nói (prod. by Kewtiie) | Official Music Video</h1>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-tag">New! ›</span>
+          <h1>HIEUTHUHAI - Trình (prod. by Kewtiie) | Official Music Video</h1>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-tag">New! ›</span>
+          <h1>HIEUTHUHAI - Exit Sign (prod. by Kewtiie) ft. marzuz [Official Lyric Video]</h1>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="arrow arrow-left" id="prevBtn">&#8249;</button>
+    <button class="arrow arrow-right" id="nextBtn">&#8250;</button>
+
+    <!-- Thumbnails: ảnh chỉ khai báo 1 lần ở đây, JS tự set background slide -->
+    <div class="thumbnails" id="thumbnails">
+      <div class="thumb active" data-index="0">
+        <img src="https://i.ytimg.com/vi/8sVtL0o-v7U/maxresdefault.jpg" alt="Người Im Lặng"/>
+      </div>
+      <div class="thumb" data-index="1">
+        <img src="https://i.ytimg.com/vi/7kO_ALcwNAw/sddefault.jpg?v=672b7503"/>
+      </div>
+      <div class="thumb" data-index="2">
+        <img src="https://lyricsvn.com/wp-content/uploads/2025/07/hieuthuhai-kpi-prod-by-kewtiie-o.jpg" alt="Live"/>
+      </div>
+    </div>
+
+    <div class="dots" id="dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+  </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
+ 
+    <!-- NOTICE -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">NOTICE</h2>
+        <a href="#" class="view-all">View all</a>
+      </div>
+      <div class="row-wrapper">
+         <button class="row-arrow row-prev" data-row="noticeRow">&#8249;</button>
+        <div class="cards-row" id="noticeRow">
+          <a class="notice-card" href="https://www.youtube.com/@HIEUTHUHAI" target="_blank">
+            <div class="notice-thumb">
+              <span>HIEUTHUHAI<br/>OFFICIAL MEMBERSHIP</span>
+            </div>
+            <p>[NOTICE] THÔNG BÁO MỞ BÁN GÓI MEMBERSHIP</p>
+          </a>
+          <a class="notice-card" href="https://www.youtube.com/@HIEUTHUHAI" target="_blank">
+            <div class="notice-thumb">
+              <span>ARTIST'S<br/>SCHEDULE</span>
+            </div>
+            <p>[NOTICE] HƯỚNG DẪN XEM LỊCH TRÌNH NGHỆ SĨ</p>
+          </a>
+          <a class="notice-card" href="https://www.youtube.com/@HIEUTHUHAI" target="_blank">
+            <div class="notice-thumb">
+              <span>HIEUTHUHAI<br/>WEBSITE</span>
+            </div>
+            <p>[NOTICE] HƯỚNG DẪN SỬ DỤNG WEBSITE</p>
+          </a>
+          <a class="notice-card" href="https://www.youtube.com/@HIEUTHUHAI" target="_blank">
+            <div class="notice-thumb">
+              <span>FAN<br/>UNIVERSE</span>
+            </div>
+            <p>[NOTICE] GIỚI THIỆU FAN UNIVERSE</p>
+          </a>
+        </div>
+        <button class="row-arrow row-next" data-row="noticeRow">&#8250;</button>
+      </div>
+    </section>
+ 
+    <!-- OFFICIAL MUSIC VIDEO -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">OFFICIAL MUSIC VIDEO</h2>
+        <a href="https://www.youtube.com/watch?v=8sVtL0o-v7U" target="_blank" class="view-all">View all</a>
+      </div>
+      <div class="row-wrapper">
+         <button class="row-arrow row-prev" data-row="mvRow">&#8249;</button>
+        <div class="cards-row" id="mvRow">
+          <a class="video-card" href="https://www.youtube.com/watch?v=8sVtL0o-v7U" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/8sVtL0o-v7U/maxresdefault.jpg" alt="Người Im Lặng"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>
+HIEUTHUHAI - Người Im Lặng Gặp Người Hay Nói (prod. by Kewtiie) l Official Music Video</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=NpI4TSgBVTw" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/NpI4TSgBVTw/maxresdefault.jpg" alt="Mong Năm Mới"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>
+HIEUTHUHAI - Mong Năm Mới Trải Hoa (prod. by Kewtiie) I Official Music Video</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=zaYS8tiD0Og" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/zaYS8tiD0Og/maxresdefault.jpg" alt="Nước Mắt"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Nước Mắt Cá Sấu (prod. by Kewtiie) l Official Music Video</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=bfKKVGYMKgs" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/bfKKVGYMKgs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDiFDlbYpgY6XcjJo7tRDU37UdS8w" alt="Trình"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>
+HIEUTHUHAI - Giờ Thì Ai Cười (prod. by Kewtiie) l Official Video</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=i0nd3NPJ4MI" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/i0nd3NPJ4MI/sddefault.jpg" alt="Trình"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Không Thể Say (prod. by Kewtiie) l Official Video</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=STjzkjnLlZ4" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/STjzkjnLlZ4/maxresdefault.jpg" alt="Trình"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>hieuthuhai - ngủ một mình ft. negav (prod. by kewtiie) | official mv</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=TTwlhJzXHo4" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/TTwlhJzXHo4/maxresdefault.jpg" alt="Trình"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Vệ Tinh ft. Hoàng Tôn (prod. by Kewtiie) | OFFICIAL MV</p>
+          </a>
+        </div>
+        <button class="row-arrow row-next" data-row="mvRow">&#8250;</button>
+      </div>
+    </section>
+ 
+    <!-- LIVE PERFORMANCE -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">LIVE PERFORMANCE</h2>
+        <a href="https://www.youtube.com/@HIEUTHUHAI" target="_blank" class="view-all">View all</a>
+      </div>
+      <div class="row-wrapper">
+         <button class="row-arrow row-prev" data-row="lyricRow">&#8249;</button>
+        <div class="cards-row" id="lyricRow">
+          <a class="video-card" href="https://www.youtube.com/watch?v=epd9hJsPiGg&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/epd9hJsPiGg/maxresdefault.jpg" alt="Exit Sign"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Exit Sign ft. marzuz | Live Performance at Sóng 26</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=1XKZStVi9XU&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=2" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/1XKZStVi9XU/maxresdefault.jpg" alt="Cần"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Live Performance at GENFest Presents MBILLION 2025</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=joOO-DTvvno&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=3" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/joOO-DTvvno/maxresdefault.jpg" alt="Chill"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Không Thể Say l Live Stage at GENfest 24</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=LvgiCAZusgY&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=4" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/LvgiCAZusgY/maxresdefault.jpg" alt="Nhớ"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - QUAY ĐI QUAY LẠI l Live Stage at GENfest 24</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=dmySiZyvZ68&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=5" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/dmySiZyvZ68/maxresdefault.jpg" alt="Cần"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - TRÌNH l Live Stage at GENfest 24</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=b9upok2zrcg&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=6" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/b9upok2zrcg/maxresdefault.jpg" alt="Chill"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Live Stage Full Performance at GENfest 24</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=1XKZStVi9XU&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=2" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/5PvzGDU8WjM/maxresdefault.jpg" alt="Cần"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Không Thể Say | Live Performance at Sóng 24</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=b5LroRO_r0o&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=8" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/b5LroRO_r0o/hqdefault.jpg" alt="Nhớ"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Live Stage at GENFest 23 l Full Performance</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=xcrZWzqEfOs&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=10" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/xcrZWzqEfOs/maxresdefault.jpg" alt="Cần"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - LAVIAI ft. HURRYKNG [LIVE at 1900 Club]</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=tEpN1XMPahY&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=11" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/tEpN1XMPahY/maxresdefault.jpg" alt="Chill"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - CUA (REMIX) ft. MANBO [LIVE at 1900 Club]</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=4QXa0n0tBZo&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=12" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/4QXa0n0tBZo/maxresdefault.jpg" alt="Nhớ"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - CHƠI (REMIX) ft. MANBO [LIVE at 1900 Club]</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=N-yG6SxfR_I&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=13" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/N-yG6SxfR_I/maxresdefault.jpg" alt="Nhớ"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>MANBO, HIEUTHUHAI, HURRYKNG - PHẢI LÀ YÊU [LIVE at 1900 Club]</p>
+            </a>
+            <a class="video-card" href="https://www.youtube.com/watch?v=DgweXoc1h2w&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=14" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/DgweXoc1h2w/maxresdefault.jpg" alt="Nhớ"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Don Quijote ft. HURRYKNG - [LIVE at 1900 Club]</p>
+          </a>
+        </div>
+        <button class="row-arrow row-next" data-row="lyricRow">&#8250;</button>
+      </div>
+    </section>
+
+<!-- BEHIND THE SCENES -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">BEHIND THE SCENES</h2>
+        <a href="https://www.youtube.com/watch?v=8sVtL0o-v7U" target="_blank" class="view-all">View all</a>
+      </div>
+      <div class="row-wrapper">
+         <button class="row-arrow row-prev" data-row="btsRow">&#8249;</button>
+        <div class="cards-row" id="btsRow">
+          <a class="video-card" href="https://www.youtube.com/watch?v=QqxeMTXtdB0" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/QqxeMTXtdB0/maxresdefault.jpg" alt="Người Im Lặng"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Người Im Lặng Gặp Người Hay Nói l M/V Making</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=MKCWF-VcP0Q" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/MKCWF-VcP0Q/maxresdefault.jpg" alt="Mong Năm Mới"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Nước Mắt Cá Sấu l Behind The Scenes</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=1RghlGDX-CA&list=PLfxWNJNjpAS_jBeta918wkURRkI3lM0m3" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/1RghlGDX-CA/maxresdefault.jpg" alt="Nước Mắt"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>HIEUTHUHAI - Không Thể Say (prod. Kewtiie) I Behind The Scenes</p>
+          </a>
+        </div>
+        <button class="row-arrow row-next" data-row="btsRow">&#8250;</button>
+      </div>
+    </section>
+    
+    <!-- REALITY SHOW -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2 class="section-title">REALITY SHOW</h2>
+        <a href="https://www.youtube.com/@HIEUTHUHAI" target="_blank" class="view-all">View all</a>
+      </div>
+      <div class="row-wrapper">
+         <button class="row-arrow row-prev" data-row="showRow">&#8249;</button>
+        <div class="cards-row" id="showRow">
+          <a class="video-card" href="https://www.youtube.com/watch?v=nFu1-S1tL-w" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/nFu1-S1tL-w/maxresdefault.jpg" alt="Exit Sign"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>2 Ngày 1 Đêm | Tập 97: Nghêu - Ngao đời "lên hương", Chú 6 tâm sự, dành lời khen cho HIEUTHUHAI
+</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=e_pMZcQ1tbY" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/e_pMZcQ1tbY/maxresdefault.jpg" alt="Cần"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>2 Ngày 1 Đêm | Tập 96:"Bộ 3 phép thuật" rối trí vì gia đình nhà Táo,Diễm "cứng người" bị dồn tới tấp
+</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=m5gSGenB6l0" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/m5gSGenB6l0/maxresdefault.jpg" alt="Chill"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>2 Ngày 1 Đêm | Tập 95: HIEUTHUHAI từ chối Diễm, dàn cast "quẩy tưng bừng" Hội Chợ Góp Xuân
+</p>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=LvgiCAZusgY&list=PLfxWNJNjpAS_ErubeLENSeVQH8WHT3ftC&index=4" target="_blank">
+            <div class="video-thumb">
+              <img src="https://i.ytimg.com/vi/yMRqcrLXW4U/maxresdefault.jpg" alt="Nhớ"/>
+              <div class="play-btn">▶</div>
+            </div>
+            <p>2 Ngày 1 Đêm Mùa 4|Tập 94: Cris -HIEUTHUHAI bùng nổ khả năng giải mã, Tăng Duy Tân bất ngờ "đuổi" PD</p>
+          </a>
+        </div>
+        <button class="row-arrow row-next" data-row="showRow">&#8250;</button>
+      </div>
+    </section>
+ 
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-info">
+        <p><strong>Commercial Management: NOMAD MGMT Vietnam</strong></p>
+        <p>M MUSIC SERVICES JSC</p>
+        <p>Address: 35/2 Nguyen Van Huong, An Khanh Ward, Ho Chi Minh City, Viet Nam</p>
+        <p>Hotline: (+84) 783 458 486 (9:30 - 18:00 working days)</p>
+        <p>Email: <a href="mailto:mfan.cs@mmusic.asia">mfan.cs@mmusic.asia</a></p>
+        <p>Business license number: 0315973108</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2025.M MUSIC SERVICES JSC . All rights reserved.</p>
+        <p>Hosting by M MUSIC</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <a href="#">Terms and Conditions</a>
+      <a href="#">Personal information collection and Usage Agreement</a>
+      <a href="#">Delivery and Payment Policy</a>
+      <a href="#">Return &amp; Exchange Policy</a>
+      <a href="#">Cookie policy</a>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
 </body>
 </html>
