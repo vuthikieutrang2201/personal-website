@@ -1,0 +1,120 @@
+<section class="about">
+  <div class="about-container">
+
+    <!-- LEFT IMAGE -->
+    <div class="about-img">
+      <img src="https://static-images.vnncdn.net/files/publish/2023/10/21/rapper-hieuthuhai-ngao-man-tham-vong-va-co-don-27.jpg?width=0&s=E7YNhW-tDnCwt_nQaRfdhg" alt="artist">
+      <div class="light-bar"></div>
+      <h1 class="bg-text">about<br>the<br>artist</h1>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="about-content">
+      <h2>HIEUTHUHAI</h2>
+      <p>
+        HIEUTHUHAI (Trần Minh Hiếu), sinh năm 1999 tại TP. Hồ Chí Minh, 
+        là rapper, ca sĩ và diễn viên. Xuất thân từ cộng đồng underground 
+        cùng nhóm GERDNANG, anh ghi dấu ấn với phong cách kết hợp Rap, Pop, 
+        R&B và hình ảnh phản chiếu tinh thần thế hệ trẻ.
+      </p>
+
+      <p>
+        Ngoài âm nhạc, HIEUTHUHAI còn mở rộng sang thời trang, quảng cáo 
+        và điện ảnh, mang đến trải nghiệm gần gũi và kết nối với khán giả.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.about {
+  background: #5c0000;
+  padding: 80px 40px;
+  color: white;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+/* IMAGE */
+.about-img {
+  position: relative;
+  flex: 1;
+}
+
+.about-img img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* LIGHT EFFECT */
+.light-bar {
+  position: absolute;
+  top: 100%;
+  left: -100%;
+  width: 200%;
+  height: 5px;
+  background: linear-gradient(to right, transparent, orange, transparent);
+  animation: lightMove 3s infinite;
+}
+
+@keyframes lightMove {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* BACKGROUND TEXT */
+.bg-text {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  font-size: 60px;
+  color: rgba(255,0,0,0.3);
+  font-weight: bold;
+}
+
+/* CONTENT */
+.about-content {
+  flex: 1;
+}
+
+.about-content h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+  }
+}
+</style>
+
+<script>
+/* SCROLL FADE-IN EFFECT */
+const about = document.querySelector(".about-content");
+
+window.addEventListener("scroll", () => {
+  let pos = about.getBoundingClientRect().top;
+  let screen = window.innerHeight;
+
+  if (pos < screen - 100) {
+    about.style.opacity = 1;
+    about.style.transform = "translateY(0)";
+  }
+});
+
+about.style.opacity = 0;
+about.style.transform = "translateY(50px)";
+about.style.transition = "1s";
+</script>

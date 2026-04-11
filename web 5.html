@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIEUTHUHAI Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS GOVERNING THE LOOK */
+        :root {
+            --dark-blue: #050a12;
+            --light-blue: #1a3a5f;
+            --red: #ff0000;
+            --white: #ffffff;
+            --gray: #b3b3b3;
+        }
+
+        body {
+            margin: 0;
+            background: radial-gradient(circle at top, var(--light-blue) 0%, var(--dark-blue) 100%);
+            background-attachment: fixed;
+            color: var(--white);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        header {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 5%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .logo {
+            color: var(--red);
+            font-weight: 800;
+            font-size: 22px;
+            text-shadow: 0 0 10px rgba(255,0,0,0.3);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            opacity: 0.8;
+        }
+
+        nav ul li a:hover { opacity: 1; color: var(--red); }
+
+        .nav-icons { display: flex; gap: 15px; font-size: 18px; }
+        .nav-icons i { cursor: pointer; opacity: 0.8; }
+        .nav-icons i:hover { opacity: 1; }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section { margin-bottom: 50px; position: relative; }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 26px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .view-all {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Carousel Grid (3 items per row) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            position: relative;
+        }
+
+        /* Nút mũi tên bên phải (giống trong ảnh) */
+        .arrow-next {
+            position: absolute;
+            right: -40px;
+            top: 40%;
+            font-size: 30px;
+            color: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+
+        .card {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: scale(1.03); }
+
+        .thumbnail {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 0, 0.9);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-title {
+            margin-top: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .arrow-next { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">HIEUTHUHAI</div>
+            <nav>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">THE ARTIST</a></li>
+                    <li><a href="#">CONTENT</a></li>
+                    <li><a href="#">FAN UNIVERSE</a></li>
+                    <li><a href="#">SHOP</a></li>
+                </ul>
+            </nav>
+            <div class="nav-icons">
+                <i class="fa-regular fa-calendar"></i>
+                <i class="fa-regular fa-bell"></i>
+                <i class="fa-solid fa-bag-shopping"></i>
+                <i class="fa-regular fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section>
+            <div class="section-header">
+                <h2>ALBUMS</h2>
+                <a href="#" class="view-all">view all</a>
+            </div>
+            <div class="grid">
+                <div class="card" onclick="goTo('LINK_ALBUM_1')">
+                    <div class="thumbnail"><img src="https://i.ytimg.com/vi/eqZCTLEYQLo/maxresdefault.jpg" alt="Album"></div>
+                    <p class="card-title">Ai rồi cũng phải bắt đầu từ đâu đó (2023)</p>
+                </div>
+                <div class="card" onclick="goTo('LINK_ALBUM_2')">
+                    <div class="thumbnail"><img src="https://i.ytimg.com/vi/7kO_ALcwNAw/maxresdefault.jpg" alt="Album"></div>
+                    <p class="card-title">Trình (2024)</p>
+                </div>
+                <div class="card" onclick="goTo('LINK_ALBUM_3')">
+                    <div class="thumbnail"><img src="https://i.ytimg.com/vi/STjzkjnLlZ4/maxresdefault.jpg" alt="Album"></div>
+                    <p class="card-title">Ngủ một mình (2022)</p>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-next"></i>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>SHOWS</h2>
+                <a href="#" class="view-all">view all</a>
+            </div>
+            <div class="grid">
+                <div class="card" onclick="goTo('https://www.youtube.com/watch?v=YGBJQsNzcCs')">
+                    <div class="thumbnail">
+                        <img src="https://i.ytimg.com/vi/YGBJQsNzcCs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLA4YyKYQmUmgMR3tBZovfvuyZvNCQ" alt="Show">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i> Watch on YouTube</div>
+                    </div>
+                    <p class="card-title">Have a sip</p>
+                </div>
+                <div class="card" onclick="goTo('https://www.youtube.com/watch?v=fYQ788C7KrA')">
+                    <div class="thumbnail">
+                        <img src="https://i.ytimg.com/vi/fYQ788C7KrA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAKrBsjKJ-3OdV7eKiOmSYcjU9fLA" alt="Show">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i> Watch on YouTube</div>
+                    </div>
+                    <p class="card-title">Chương trình 2 ngày 1 đêm</p>
+                </div>
+                <div class="card" onclick="goTo('https://www.youtube.com/watch?v=spZV-B1rlZo')">
+                    <div class="thumbnail">
+                        <img src="https://i.ytimg.com/vi/spZV-B1rlZo/maxresdefault.jpg" alt="Show">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i> Watch on YouTube</div>
+                    </div>
+                    <p class="card-title">Chương trình 2 ngày 1 đêm</p>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-next"></i>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <h2>COLLABS</h2>
+                <a href="#" class="view-all">view all</a>
+            </div>
+            <div class="grid">
+                <div class="card" onclick="goTo('https://www.youtube.com/watch?v=AMAAt31eQYc')">
+                    <div class="thumbnail">
+                        <img src="https://i.ytimg.com/vi/AMAAt31eQYc/maxresdefault.jpg" alt="Collab">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i> Watch on YouTube</div>
+                    </div>
+                    <p class="card-title">HURRYKHANG ft.HIEUTHUHAI - Một công đôi việc</p>
+                </div>
+                <div class="card" onclick="goTo('https://www.youtube.com/watch?v=YaSRwcOAwOk')">
+                    <div class="thumbnail">
+                        <img src="https://i.ytimg.com/vi/YaSRwcOAwOk/sddefault.jpg" alt="Collab">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i> Watch on YouTube</div>
+                    </div>
+                    <p class="card-title">B Ray ft.HIEUTHUHAI - Không phải gu</p>
+                </div>
+                <div class="card" onclick="goTo('https://www.youtube.com/watch?v=QdtGFMkQL6Y')">
+                    <div class="thumbnail">
+                        <img src="https://i.ytimg.com/vi/QdtGFMkQL6Y/maxresdefault.jpg" alt="Collab">
+                        <div class="play-btn"><i class="fa-solid fa-play"></i> Watch on YouTube</div>
+                    </div>
+                    <p class="card-title">Phương Ly ft.HIEUTHUHAI - Xoay một vòng</p>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-next"></i>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Hàm điều hướng khi click vào card
+        function goTo(url) {
+            if (url.startsWith('http')) {
+                window.open(url, '_blank');
+            } else {
+                alert("Bạn chưa dán link video/ảnh vào chỗ " + url);
+            }
+        }
+    </script>
+</body>
+</html>
